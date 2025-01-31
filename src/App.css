@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=VT323&display=swap');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.Chatbox-container{
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 700px;
+  overflow: hidden;
+  border: 3px solid black;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.457);
+
+  h2{
+    color: black;
+    text-transform: uppercase;
+  }
+}
+
+.Chatbox{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow: hidden;
+  background-image: url(./assets/pattern-monochrome-telegram-logo-cats-hd-wallpaper-preview.jpg);
+  background-size: fill;
+  background-attachment: fixed;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: black white;
+  gap: 5px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.Message{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.502);
+  max-width: 250px;
+  border-radius: 5px;
+  align-self: flex-start;
+  text-align: left;
+  padding: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  animation: appear 0.5s;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.message-reaction{
+  text-align: right;
+}
+
+.Reaction{
+  display: none;
+  transition: all 0.4s;
+  font-size: 20px;
+  width: 150px;
+  transition: all 0.4s;
+}
+
+.Message:hover .Reaction{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transition: all 0.4s;
+}
+
+.Reaction-emoji{
+  width: 30px;
+  animation: appear 0.5s;
+}
+
+.Reaction-emoji:hover{
+  background-color: rgba(255, 255, 255, 0.655);
+  border-radius: 5px;
+}
+
+@keyframes appear{
+  0%{
+    scale: 0;
+    height: 0%;
+  }
+  100%{
+    scale: 1;
+    height: 100%;
+  }
+} 
+  
+
+
+.User1{
+  background-color: rgba(0, 0, 0, 0.628);
+  align-self: flex-end;
+}
+
+.Typing{
+  background-color: rgba(0, 0, 0, 0.42);
+  align-self: flex-end;
+  justify-self: flex-end;
+  animation: typing 5s infinite;
+  font-family: "Imperial Script", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.Time{
+  color: rgba(255, 255, 255, 0.459);
+  line-height: 20px;
+}
+
+@keyframes typing{
+  1%{
+    color: aqua;
+  }
+  50%{
+   color: white;
+  }
+  100%{
+    color: aqua;
+  }
+}
+
+.Emoji{
+  transition: all 0.4s;
+}
+
+.Emoji-List{
+  display:none;
+  transition: all 0.4s;
+}
+
+.Emoji:hover{
+  cursor: pointer;
+
+  .Emoji-List{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 160px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.523);
+    border-radius: 5px;
+    margin-bottom: 40px;
+  }
+
+}
+
+.EmojiSymbol{
+  width: 40px;
+
+}
+
+.EmojiSymbol:hover{
+  background-color: rgba(0, 0, 0, 0.436);
+  transition: all 0.4s;
+  border-radius: 5px;
+}
+
+.Chatbox-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  height: 50px;
+  padding: 10px;
+  transition: all 0.4s;
+
+  input{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    padding: 5px;
+    
+  }
+
+  button{
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+    padding: auto;
+    background-color: white;
+    cursor: pointer;
+    padding: 0px;
+
+    img{
+      width: 60px;
+      height: 60px;
+    }
+  }
+  
+}
+
+
