@@ -1,20 +1,37 @@
 import arrow from '../assets/arrow.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import Emoji from './Emoji';
+const socket = io('http://localhost:4000');
 
 function ChatBox(){
 
     const [typing, setTyping] = useState(false);
 
-    const [messages, setMessages] = useState([
-        {user: 'User1', text: 'Hi! How are you?', time: '23:35',reaction: ''},
-        {user: 'User2', text: 'I am fine! How are you?', time: '23:35',reaction: '😊'},
-        {user: 'User1', text: 'I am fine too. What are you doing?', time: '23:35',reaction: ''},
-        {user: 'User2', text: 'Nothing special. Playing Cyberpunk 2077. And you?', time: '23:36',reaction: ''},
-        {user: 'User1', text: 'Just watching Netflix. I am bored.', time: '23:37',reaction: ''},
-    ]);
+
+    const [messages, setMessages] = useState([]);
 
     const emojiList = ["😊", "😂", "😍", "😎", "👍", "🔥", "❤️", "😭","🖕","🤬"];
+
+    useEffect(() => {
+        // Load initial messages
+        const handleInitialMessages = (initialMessages) => {
+          setMessages(initialMessages);
+        };
+      
+        const handleNewMessage = (newMessage) => {
+          setMessages((prev) => [...prev, newMessage]);
+        };
+      
+        socket.on('initialMessages', handleInitialMessages);
+        socket.on('receiveMessage', handleNewMessage);
+      
+        return () => {
+          socket.off('initialMessages', handleInitialMessages);
+          socket.off('receiveMessage', handleNewMessage);
+        };
+
+      }, []);
 
     function handleInputChange(e) {
         setTyping(e.target.value.length > 0);
@@ -29,9 +46,10 @@ function ChatBox(){
         console.log(message);
         if(message.length > 0){
             const newMessage = {user: 'User1', text: message, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })};
-            setMessages([...messages, newMessage]);
             input.value = '';
             setTyping(false);
+            console.log(messages);
+            socket.emit('sendMessage', newMessage);
         }
         chatbox.scrollTop = chatbox.scrollHeight;
     }

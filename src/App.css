@@ -76,7 +76,6 @@
   scrollbar-color: black white;
   gap: 5px;
   padding: 20px;
-  height: 100%;
   transition: all 0.4s;
 }
 
@@ -84,7 +83,7 @@
   color: white;
   background-color: rgba(0, 0, 0, 0.502);
   max-width: 250px;
-  border-radius: 5px;
+  border-radius: 10px;
   align-self: flex-start;
   text-align: left;
   padding: 20px;
@@ -112,6 +111,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   transition: all 0.4s;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.466);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .Reaction-emoji{
